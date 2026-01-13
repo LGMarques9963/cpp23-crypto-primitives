@@ -1,153 +1,165 @@
-# 🔐 Cracking Codes with C++: Implementing "Cracking Codes with Python" in C++
+# 🔐 C++23 Cryptographic Primitives
 
-## 📌 About This Project
-This repository is a C++ implementation of the ciphers and cryptographic techniques described in *Cracking Codes with Python* by Al Sweigart. It serves as a portfolio demonstrating practical cryptographic skills for a cybersecurity role.
+[![C++23](https://img.shields.io/badge/Standard-C%2B%2B23-00599C?logo=c%2B%2B&logoColor=white)](https://en.cppreference.com/w/cpp/23)
+[![Build](https://img.shields.io/badge/Build-CMake-064F8C?logo=cmake&logoColor=white)](https://cmake.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-Each cipher algorithm is implemented in modern C++ (C++23), with a focus on clean code, efficiency, and readability.
+## 📌 Project Overview
 
-## 🚀 Features
-✅ Implementations of classic ciphers in C++<br>
-✅ Modern C++ (C++23) with clean code and efficient algorithms<br>
-✅ Code structure following best practices<br>
-✅ Educational resources for cryptographic techniques<br>
-✅ Demonstrations of encryption, decryption, and brute-force hacking<br>
-✅ Unit tests for each cipher implementation
----
+This repository contains a collection of **cryptographic algorithms and attacks implemented in modern C++**, focused on understanding **how cryptography behaves in real software systems**.
 
-## 🛠️ Implemented Ciphers
-| Cipher Algorithm               | Description                                                                     |
-|--------------------------------|---------------------------------------------------------------------------------|
-| **Caesar Cipher**              | A simple substitution cipher that shifts characters by a fixed key              |
-| **Transposition Cipher**       | A columnar transposition encryption algorithm                                   |
-| **Reverse Cipher**             | A basic cipher that reverses the message                                        |
-| **Affine Cipher**              | A more complex substitution cipher based on modular arithmetic                  |
-| **Vigenère Cipher**            | A polyalphabetic substitution cipher using a keyword                            |
-| **Simple Substitution Cipher** | A basic symmetric encryption using bitwise XOR                                  |
-| **Public-Key Cryptography**    | A cryptographic system that uses a pair of keys (public & private)              |
-| **One-Time Pad Cipher**        | An **unbreakable** cipher that uses a random key as long as the message itself. |
-| **Breaking Ciphers**           | Implementing basic cryptanalysis techniques to break the above ciphers          |
+It is designed as a **cryptography engineering lab**, not as a production crypto library.
 
 ---
 
-## 🚀 Why This Project Matters
-- **🔐 Cybersecurity & Cryptography**: Understanding cryptographic algorithms is a fundamental skill for security professionals.
-- **⚡ C++ Proficiency**: This project demonstrates **efficient** and **optimized** implementations in **modern C++**.
-- **🎯 Algorithmic Thinking**: Many of these ciphers require mathematical reasoning and modular arithmetic.
-- **🌟 Cryptanalysis Practice**: Some implementations include **hacking functions** to attempt decryption without a known key.
+## Purpose
+
+Most security failures do not come from broken math — they come from:
+- incorrect implementations  
+- unsafe memory handling  
+- misuse of cryptographic primitives  
+- weak key management  
+
+This project exists to study **cryptography as software**, including:
+- how ciphers are implemented  
+- how they fail  
+- and how they are attacked  
+
+
+> *Designed to demonstrate how modern C++ features (RAII, Smart Pointers, String Views) can optimize legacy cryptographic implementations.*
+
+---
+
+## 🚀 Technical Highlights
+
+Unlike standard textbook implementations, this project leverages modern language features to ensure robustness:
+
+- **⚡ C++23 Standards:** Utilizes modern containers and algorithms to avoid raw pointer manipulation.
+- **🛡️ Cryptanalysis Engine:** Includes modules for **brute-force**, **frequency analysis**, and **pattern recognition** to simulate attack vectors.
+- **🧪 Unit Testing:** Comprehensive test coverage using `ctest` to validate mathematical correctness.
+- **🏗️ Modular Architecture:** Clean separation of concerns with header-only utilities and compiled logic.
+
+---
+
+## 🛠️ Implemented Algorithms
+
+| Category | Algorithm | Technical Focus |
+| :--- | :--- | :--- |
+| **Substitution** | **Caesar / Rot13** | Modular arithmetic & character set shifting. |
+| **Substitution** | **Vigenère** | Polyalphabetic substitution using keyword cycles. |
+| **Substitution** | **Affine** | Linear algebra concepts ($ax + b \pmod m$). |
+| **Transposition** | **Columnar Transposition** | Matrix-based data manipulation and memory layout optimization. |
+| **Symmetric** | **XOR Cipher** | Bitwise operations and key stream generation. |
+| **Asymmetric** | **Public-Key (RSA Prototype)** | Basics of prime number generation and modular exponentiation. |
+| **Stream** | **One-Time Pad** | Information-theoretic security implementation. |
 
 ---
 
 ## 📂 Project Structure
-```
-💾 Cpp-Ciphers
-📚 README.md          # Documentation (this file)
-📺 src
-   📝 caesarCyph.h      # Caesar Cipher Header
-   📝 caesarCyph.cpp    # Caesar Cipher Implementation
-   📝 transposition.h   # Transposition Cipher Header
-   📝 transposition.cpp # Transposition Cipher Implementation
-   📝 main.cpp          # Entry Point for Testing Ciphers
-   📝 utils.h           # Utility functions (e.g., string processing)
-   📝 utils.cpp         # Implementation of utilities
-📺 tests
-   📝 test_caesar.cpp   # Unit tests for Caesar Cipher
-   📝 test_transp.cpp   # Unit tests for Transposition Cipher
-📃 CMakeLists.txt     # Build configuration
+
+```text
+cpp23-crypto-primitives/
+├── src/                # Core implementation logic
+│   ├── symmetric/      # Substitution and Transposition ciphers
+│   ├── asymmetric/     # Public Key infrastructure
+│   └── utils/          # Math and String helpers
+├── tests/              # Unit tests (GTest/CTest)
+├── include/            # Header files
+└── CMakeLists.txt      # Build configuration
+
 ```
 
 ---
 
-## ⚙️ Building and Running the Project
-### **🔹 Prerequisites**
-- C++23 Compiler (GCC 11+, Clang 14+, MSVC)
-- CMake (for easy compilation)
-- Git (for version control)
+## ⚙️ Build & Benchmarking
 
-### **🔹 Build Instructions**
+### Prerequisites
+
+* C++ Compiler supporting C++20/23 (GCC 11+, Clang 14+, MSVC)
+* CMake 3.10+
+
+### Compilation
+
 ```bash
 # Clone the repository
-git clone https://github.com/LGMarques9963/cript-cpp.git
-cd cpp-ciphers
+git clone [https://github.com/LGMarques9963/cpp23-crypto-primitives.git](https://github.com/LGMarques9963/cpp23-crypto-primitives.git)
+cd cpp23-crypto-primitives
 
-# Create a build directory
+# Build with optimizations
 mkdir build && cd build
-
-# Run CMake to generate Makefiles
-cmake ..
-
-# Compile the project
+cmake -DCMAKE_BUILD_TYPE=Release ..
 make
 
-# Run the program
-./cript
-```
-
----
-
-## 🛡️ Cybersecurity Relevance
-Each cipher implementation includes **basic cryptanalysis techniques**, such as:
-- **Brute-force attacks** (e.g., cracking the Caesar Cipher)
-- **Frequency analysis** (e.g., breaking simple substitution ciphers)
-- **Known-plaintext attacks** (e.g., cracking transposition ciphers)
-- **Pattern recognition in encryption schemes**
-- **Detecting English text in a message**
-
-These skills are essential in fields such as:
-- **Red Teaming / Penetration Testing**
-- **Reverse Engineering**
-- **Cryptanalysis & Cryptographic Security**
-- **CTF (Capture The Flag) Challenges**
-
----
-
-## 🧠 Testing the Implementations
-Unit tests are included to ensure correctness of each cipher.
-
-To run tests:
-```bash
-cd build
+# Run the test suite
 ctest --verbose
+
 ```
 
 ---
 
-## 🌌 Future Enhancements
-✔️ Implement more **ciphers** (Hill Cipher, Playfair, RSA, etc.)<br> 
-✔️ Implement **multithreaded brute-force attacks** for efficiency<br>
-✔️ Create **interactive CLI and GUI tools** for encrypting messages
+## 🛡️ Security Research Context
+
+This library includes **offensive security modules** used for educational cryptanalysis:
+
+* **Frequency Analysis:** Statistical attack on monoalphabetic substitution.
+* **Brute-Force Multithreading:** Leveraging concurrency to exhaust key spaces.
+* **Known-Plaintext Attacks:** Reverse engineering keys from partial data.
+
+*Note: While implemented with efficiency in mind, this is a research library. It has not been audited for side-channel resistance (timing attacks, power analysis) and should not be used to secure production data.*
+
+## Why this matters for security engineering
+
+In real systems, cryptography is embedded inside:
+- authentication tokens  
+- APIs  
+- secure storage  
+- TLS stacks  
+- distributed systems  
+
+Understanding how crypto **fails in code** is essential for:
+- AppSec  
+- secure backend design  
+- vulnerability research  
+- protocol analysis  
+
+This project trains the ability to reason about:
+> **cryptography at the level where exploits actually happen: in memory and code.**
 
 ---
 
-## 📄 Credits & Resources
-- **Book**: *Cracking Codes with Python* by Al Sweigart [(NoStarch Press)](https://nostarch.com/crackingcodes)
-- **C++ Documentation**: [cppreference.com](https://en.cppreference.com/)
+## Engineering focus
+
+Beyond cryptography, this project emphasizes:
+
+- clean C++ APIs  
+- memory safety  
+- test-driven development  
+- predictable behavior  
+- reproducibility  
+
+These are the same properties required in:
+- secure services  
+- key management systems  
+- identity platforms  
+- encryption pipelines  
+
+---
+
+## 📄 References & Credits
+
+This project builds upon concepts from:
+
+* *Cracking Codes with Python* (Al Sweigart) - Adapted for System Level Programming.
+* *The C++ Standard Library* (Josuttis) - For best practices in STL usage.
+
 ---
 
 ## 🤝 Contributing
-If you're interested in contributing:
-- Open an issue for bugs or feature requests.
-- Fork the repository and submit a pull request.
-- Improve documentation and test cases.
+
+Contributions focused on **optimization**, **Post-Quantum algorithms**, or **memory safety improvements** are welcome.
 
 ---
 
-## 🔒 Disclaimer
-This repository is intended **for educational purposes only**.  
-**Do not use these implementations for real-world cryptographic security!**  
-Always use **strong encryption standards** such as **AES, RSA, and ECC** for securing sensitive information.
+## 💌 Author
 
----
-
-## 💌 Contact
-**📌 Author:** Lorran Marques<br>
-**🌐 LinkedIn:** [Lorran Marques](https://www.linkedin.com/in/lgmarques/)  
-**🔍 GitHub:** [LGMarques9963](https://github.com/LGMarques9963)  
-**📧 Email:** lorran9963@gmail.com
-
----
-
-### **🔐 Secure the Code. Understand the Math. Hack the Ciphers. 🚀**
-
----
-🌟 *If you find this project helpful, consider giving it a ⭐ on GitHub!*
-
+**Lorran Marques** *Systems & Security Engineer | M.Sc. Candidate* [LinkedIn](https://www.linkedin.com/in/lgmarques/) • [GitHub](https://github.com/LGMarques9963)
